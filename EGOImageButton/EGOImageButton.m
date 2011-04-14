@@ -63,6 +63,10 @@
 	
 	if(anImage) {
 		[self setImage:anImage forState:UIControlStateNormal];
+        //if image loaded from cache, notifiy deleagate that we loaded
+        if([self.delegate respondsToSelector:@selector(imageButtonLoadedImage:)]) {
+            [self.delegate imageButtonLoadedImage:self];
+        }
 	} else {
 		[self setImage:self.placeholderImage forState:UIControlStateNormal];
 	}

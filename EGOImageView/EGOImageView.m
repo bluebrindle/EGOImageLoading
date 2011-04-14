@@ -63,6 +63,10 @@
 	
 	if(anImage) {
 		self.image = anImage;
+        //if image loaded from cache, notifiy deleagate that we loaded
+        if([self.delegate respondsToSelector:@selector(imageViewLoadedImage:)]) {
+            [self.delegate imageViewLoadedImage:self];
+        }
 	} else {
 		self.image = self.placeholderImage;
 	}
